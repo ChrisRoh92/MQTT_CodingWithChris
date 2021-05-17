@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.mqtt_tutorial.MainViewModel
 import com.example.mqtt_tutorial.R
+import com.example.mqtt_tutorial.printToast
 import kotlinx.android.synthetic.main.fragment_first.*
 
 /**
@@ -49,7 +50,7 @@ class FirstFragment : Fragment() {
             if(checkInputs())
                 connectToBroker()
             else
-                printToast("Bitte alle Felder ausfüllen....")
+                printToast(requireContext(),"Bitte alle Felder ausfüllen....")
         }
 
     }
@@ -82,7 +83,7 @@ class FirstFragment : Fragment() {
                     else
                     {
                         unblockInputs()
-                        printToast("Verbindung konnte nicht hergestellt werden...")
+                        printToast(requireContext(),"Verbindung konnte nicht hergestellt werden...")
                     }
 
                 }
@@ -134,58 +135,8 @@ class FirstFragment : Fragment() {
 
 
 
-    private fun showInput()
-    {
-        if(!first_et_name.text.isNullOrEmpty() && !first_et_pwd.text.isNullOrEmpty())
-        {
-//            printToast("${first_et_name.text}   ${first_et_pwd.text}")
-            showOnCustomDialog(first_et_name.text.toString(),first_et_pwd.text.toString())
-        }
-        else
-        {
-            printToast("Bitte beide Felder ausfüllen")
-        }
-    }
-
-    private fun showOnCustomDialog(user:String,pwd:String)
-    {
-        val dialog = Dialog(requireContext())
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setCancelable(false)
-        dialog.setContentView(R.layout.dialog_simple_input)
-
-    }
-
-    /*private fun showOnCustomAlertDialog(user:String,pwd:String)
-    {
-        val inflater = layoutInflater
-        val builder = AlertDialog.Builder(requireContext()).apply {
-
-            setView(inflater.inflate(R.layout.dialog_simple_input,null)).apply {
-                setTitle("Ergebnis")
-                setPositiveButton("Verstanden") { dialogInterface, i ->
-                    dialogInterface.cancel()
-                }
-                setPositiveButton("Verstanden") { dialogInterface, i ->
-                    dialogInterface.cancel()
-                }
-                val et = this.
-            }
 
 
-
-
-
-        }.create()
-        builder.show()
-    }*/
-
-    private fun printToast(msg:String)
-    {
-        Toast.makeText(requireContext(),msg,Toast.LENGTH_LONG).apply {
-            setGravity(Gravity.CENTER,0,0)
-        }.show()
-    }
 
 
 
