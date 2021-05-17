@@ -1,2 +1,6 @@
+/*
+ * Copyright (c) 2021 CodingWithChris - All Rights Reserved
+ */
+
 include ':app'
 rootProject.name = "MQTT_Tutorial"

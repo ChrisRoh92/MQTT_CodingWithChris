@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+#
+# Copyright (c) 2021 CodingWithChris - All Rights Reserved
+#
+
 ##############################################################################
 ##
 ##  Gradle start up script for UN*X

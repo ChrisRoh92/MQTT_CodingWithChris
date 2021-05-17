@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2021 CodingWithChris - All Rights Reserved
+ */
+
 package com.example.mqtt_tutorial
 
 import android.view.LayoutInflater

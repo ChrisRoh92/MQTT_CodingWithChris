@@ -1,20 +1,19 @@
-package com.example.mqtt_tutorial
+/*
+ * Copyright (c) 2021 CodingWithChris - All Rights Reserved
+ */
 
-import android.app.AlertDialog
+package com.example.mqtt_tutorial.fragments
+
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.mqtt_tutorial.MainViewModel
+import com.example.mqtt_tutorial.R
 import kotlinx.android.synthetic.main.fragment_first.*
-import org.eclipse.paho.client.mqttv3.IMqttActionListener
-import org.eclipse.paho.client.mqttv3.IMqttToken
-import org.eclipse.paho.client.mqttv3.MqttCallback
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -23,7 +22,7 @@ class FirstFragment : Fragment() {
 
 
     // ViewModel anlegen:
-    private lateinit var viewModel:MainViewModel
+    private lateinit var viewModel: MainViewModel
 
 
 
@@ -40,7 +39,8 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(requireActivity(),defaultViewModelProviderFactory).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity(),defaultViewModelProviderFactory).get(
+            MainViewModel::class.java)
 
 //        val etName:EditText = first_et_name
 //        val etPwd:EditText = first_et_pwd

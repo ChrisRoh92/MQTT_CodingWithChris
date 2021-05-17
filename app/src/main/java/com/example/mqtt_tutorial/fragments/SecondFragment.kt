@@ -1,17 +1,22 @@
-package com.example.mqtt_tutorial
+/*
+ * Copyright (c) 2021 CodingWithChris - All Rights Reserved
+ */
+
+package com.example.mqtt_tutorial.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
-import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mqtt_tutorial.MainViewModel
+import com.example.mqtt_tutorial.MessageAdapter
+import com.example.mqtt_tutorial.R
+import com.example.mqtt_tutorial.printToast
 import kotlinx.android.synthetic.main.fragment_second.*
 
 /**
@@ -58,7 +63,8 @@ class SecondFragment : Fragment() {
         }
 
 
-        viewModel = ViewModelProvider(requireActivity(),defaultViewModelProviderFactory).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity(),defaultViewModelProviderFactory).get(
+            MainViewModel::class.java)
         viewModel.getMessages().observe(viewLifecycleOwner, Observer { data ->
             adapter.updateContent(data)
             rv.scrollToPosition(0)

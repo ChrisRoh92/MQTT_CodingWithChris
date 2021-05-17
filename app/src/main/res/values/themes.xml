@@ -1,3 +1,7 @@
+<!--
+  ~ Copyright (c) 2021 CodingWithChris - All Rights Reserved
+  -->
+
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.MQTT_Tutorial" parent="Theme.MaterialComponents.DayNight.DarkActionBar">

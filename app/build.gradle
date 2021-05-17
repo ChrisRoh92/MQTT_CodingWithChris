@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2021 CodingWithChris - All Rights Reserved
+ */
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
