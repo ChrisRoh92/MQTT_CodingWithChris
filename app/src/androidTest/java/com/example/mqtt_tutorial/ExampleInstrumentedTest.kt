@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2021 CodingWithChris - All Rights Reserved
+ */
+
 package com.example.mqtt_tutorial
 
 import androidx.test.platform.app.InstrumentationRegistry

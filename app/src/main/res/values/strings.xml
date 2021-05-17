@@ -1,3 +1,7 @@
+<!--
+  ~ Copyright (c) 2021 CodingWithChris - All Rights Reserved
+  -->
+
 <resources>
     <string name="app_name">MQTT_Tutorial</string>
     <string name="action_settings">Settings</string>
