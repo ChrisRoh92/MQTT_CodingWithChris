@@ -6,14 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MessageAdapter(var content:ArrayList<Message>):RecyclerView.Adapter<MessageAdapter.ViewHolder>()
+// TODO("Modify the Constructor, to receive an ArrayList<Message>")
+class MessageAdapter():RecyclerView.Adapter<MessageAdapter.ViewHolder>()
 {
 
-    fun updateContent(content:ArrayList<Message>)
-    {
-        this.content = content
-        notifyItemInserted(0)
-    }
+    // TODO("Create a method, to update the content and update the adapter")
+
 
 
 
@@ -30,14 +28,12 @@ class MessageAdapter(var content:ArrayList<Message>):RecyclerView.Adapter<Messag
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val msg = content[position]
-        holder.tvMsg.text = msg.msg
-        holder.tvTopic.text = msg.topic
-        holder.tvTime.text = msg.time
+        TODO("Add the Data from the Message Object to the items...")
 
     }
 
     override fun getItemCount(): Int {
-        return content.size
+        TODO("Return the size of the current content")
+        return 0
     }
 }

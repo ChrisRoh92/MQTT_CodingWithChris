@@ -15,120 +15,29 @@ class MainViewModel(application: Application): AndroidViewModel(application)
 {
     private val context: Context = application.applicationContext
     // MQTT :
+    // TODO("Create an global variable for an MqttAndroidClient")
     private lateinit var mqttAndroidClient:MqttAndroidClient
 
     // LiveData:
-    private var messages:MutableLiveData<ArrayList<Message>> = MutableLiveData(ArrayList())
+    // TODO("Create MutableLiveData<ArrayList<Message>>, where Message is a Dataclass")
 
 
 
 
-    // Methode to connect MQTT Client:
-    fun initClient(serverUri:String,clientID:String,callback:(status:Boolean)->Unit)
-    {
-        Log.d(LOGTAG,"serverUri = $serverUri \t clientID = $clientID")
-        mqttAndroidClient = MqttAndroidClient(context,serverUri,clientID)
-        callback(true)
-
-    }
-
-    fun connectClient(username:String, pwd:String,callback: (status: Boolean) -> Unit)
-    {
-        mqttAndroidClient.setCallback(object:MqttCallbackExtended{
-            override fun connectionLost(cause: Throwable?) {
-                //
-            }
-
-            override fun messageArrived(topic: String?, message: MqttMessage?) {
-                Log.d(LOGTAG,"Topic = $topic \t Content Message = $message")
-
-                addNewMessageToList(message.toString(),topic!!,getStringFromDate())
-
-            }
-
-            override fun deliveryComplete(token: IMqttDeliveryToken?) {
-                //
-            }
-
-            override fun connectComplete(reconnect: Boolean, serverURI: String?) {
-                //
-            }
-
-        })
-        val options = MqttConnectOptions()
-        options.userName = username
-        options.password = pwd.toCharArray()
-        try {
-            mqttAndroidClient.connect(options,null,object:IMqttActionListener{
-                override fun onSuccess(asyncActionToken: IMqttToken?) {
-                    callback(true)
-                }
-
-                override fun onFailure(asyncActionToken: IMqttToken?, exception: Throwable?) {
-                    exception!!.printStackTrace()
-                    callback(false)
-                }
-
-            })
-        } catch(e:MqttException)
-        {
-            e.printStackTrace()
-        }
-    }
 
 
-    fun subscribe(topic:String,qos:Int = 1,callback:(status:Boolean)->Unit)
-    {
-        try{
-            mqttAndroidClient.subscribe(topic,qos,null,object:IMqttActionListener{
-                override fun onSuccess(asyncActionToken: IMqttToken?) {
-                    callback(true)
-                }
 
-                override fun onFailure(asyncActionToken: IMqttToken?, exception: Throwable?) {
-                    callback(false)
-                }
+    // TODO("Create a Method, to init a Client")
 
-            })
-        } catch(e:MqttException)
-        {
-            e.printStackTrace()
-        }
-    }
+    // TODO("Create a method, to connect the Client to the Broker")
+
+    // TODO("Create a method, to subscribe to a topic")
+
+    // TODO("Create a method to publish a Message to a topic")
+
+    // TODO("Create a method, to add a received Message to the MutableliveData<ArrayList<Message>>
+
+    // TODO("Create a Getter Method for the MutableliveData<ArrayList<Message>>
 
 
-    fun publish(topic:String,msg:String,qos:Int = 1,callback:(status:Boolean)->Unit)
-    {
-        try {
-            val message = MqttMessage()
-            message.payload = msg.toByteArray()
-            message.qos = qos
-            message.isRetained = false
-            mqttAndroidClient.publish(topic,message,null,object :IMqttActionListener{
-                override fun onSuccess(asyncActionToken: IMqttToken?) {
-                    callback(true)
-                }
-
-                override fun onFailure(asyncActionToken: IMqttToken?, exception: Throwable?) {
-                    callback(false)
-                }
-
-            })
-        } catch(e:MqttException)
-        {
-            e.printStackTrace()
-        }
-    }
-
-    fun addNewMessageToList(msg:String,topic:String,time:String)
-    {
-        val msg = Message(msg,topic,time)
-        Log.d(LOGTAG,"MainViewModel - addNewMessageToList - $msg")
-        var localMessages = messages.value!!
-        localMessages.add(0,msg)
-
-        messages.value = localMessages
-    }
-
-    fun getMessages():LiveData<ArrayList<Message>> = messages
 }
